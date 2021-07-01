@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,12 +23,15 @@ public class GUI {
 	{
 		frame = new JFrame();
 		panel = new JPanel();
+		GridBagConstraints c = new GridBagConstraints();
 		
 		
 		label = new JLabel("0");
+		//label.setHorizontalAlignment(60);
 		
 		panel.setBorder(BorderFactory.createEmptyBorder(120,120,120,120));
-		panel.setLayout(new GridLayout());
+		panel.setLayout(new GridBagLayout());
+		
 		
 		JButton button0 = new JButton("0");
 		JButton button1 = new JButton("1");
@@ -37,26 +42,76 @@ public class GUI {
 		JButton button6 = new JButton("6");
 		JButton button7 = new JButton("7");
 		JButton button8 = new JButton("8");
-		JButton button9 = new JButton("9");
+		JButton button9 = new JButton("9");	
 		JButton buttonPLUS = new JButton("+");
 		JButton buttonMINUS = new JButton("-");
 		JButton buttonEQUALS = new JButton("=");
 		
-
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 40;      //make this component tall
+		c.weightx = 1;
+		c.gridwidth = 5;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.insets = new Insets(2,2,2,2);
+		panel.add(button0,c);
 		
-		panel.add(button0);
-		panel.add(button1);
-		panel.add(button2);
-		panel.add(button3);
-		panel.add(button4);
-		panel.add(button5);
-		panel.add(button6);
-		panel.add(button7);
-		panel.add(button8);
-		panel.add(button9);
-		panel.add(buttonPLUS);
-		panel.add(buttonMINUS);
-		panel.add(buttonEQUALS);
+		c.gridx = 10;
+		c.gridy = 0;
+		panel.add(button1,c);
+		
+		c.gridx = 15;
+		c.gridy = 0;
+		panel.add(button2,c);
+		
+		c.gridx = 0;
+		c.gridy = 40;
+		panel.add(button3,c);
+		
+		c.gridx = 10;
+		c.gridy = 40;
+		panel.add(button4,c);
+		
+		c.gridx = 15;
+		c.gridy = 40;
+		panel.add(button5,c);
+		
+		c.gridx = 0;
+		c.gridy = 80;
+		panel.add(button6,c);
+		
+		c.gridx = 10;
+		c.gridy = 80;
+		panel.add(button7,c);
+		
+		c.gridx = 15;
+		c.gridy = 80;
+		panel.add(button8,c);
+		
+		c.gridx = 0;
+		c.gridy = 120;
+		panel.add(button9,c);
+		
+		c.gridwidth = 10;
+		c.gridx = 20;
+		c.gridy = 0;
+		panel.add(buttonPLUS,c);
+		
+		c.gridx = 20;
+		c.gridy = 40;
+		panel.add(buttonMINUS,c);
+		
+		c.gridx = 20;
+		c.gridy = 80;
+		panel.add(buttonEQUALS,c);
+		
+		frame.add(label, BorderLayout.PAGE_START);
+		
+		frame.add(panel, BorderLayout.CENTER);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Calculator");
+		frame.pack();
+		frame.setVisible(true);
 		
 		
 		button0.addActionListener(new ActionListener(){
@@ -152,15 +207,6 @@ public class GUI {
 				liczby[1] = -1;
 			}
 		});
-		
-		
-		panel.add(label);
-		
-		frame.add(panel, BorderLayout.CENTER);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Calculator");
-		frame.pack();
-		frame.setVisible(true);
 	}
 	
 	private void liczby(int liczba)
