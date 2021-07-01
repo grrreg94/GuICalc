@@ -14,6 +14,8 @@ public class GUI {
 	private JFrame frame;
 	private JPanel panel;
 	private JLabel label;
+	private int[] liczby = {-1,-1};
+	private char znak;
 	
 	public GUI()
 	{
@@ -38,6 +40,7 @@ public class GUI {
 		JButton button9 = new JButton("9");
 		JButton buttonPLUS = new JButton("+");
 		JButton buttonMINUS = new JButton("-");
+		JButton buttonEQUALS = new JButton("=");
 		
 
 		
@@ -53,12 +56,14 @@ public class GUI {
 		panel.add(button9);
 		panel.add(buttonPLUS);
 		panel.add(buttonMINUS);
+		panel.add(buttonEQUALS);
 		
 		
 		button0.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("0");
+				liczby(0);
 			}
 		});
 		
@@ -66,66 +71,85 @@ public class GUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("1");
+				liczby(1);
 			}
 		});
 		button2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("2");
+				liczby(2);
 			}
 		});
 		button3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("3");
+				liczby(3);
 			}
 		});
 		button4.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("4");
+				liczby(4);
 			}
 		});
 		button5.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("5");
+				liczby(5);
 			}
 		});
 		button6.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("6");
+				liczby(6);
 			}
 		});
 		button7.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("7");
+				liczby(7);
 			}
 		});
 		button8.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("8");
+				liczby(8);
 			}
 		});
 		button9.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("9");
+				liczby(9);
 			}
 		});
 		buttonPLUS.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("+");
+				znaki('+');
 			}
 		});
 		buttonMINUS.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("-");
+				znaki('-');
+			}
+		});
+		buttonEQUALS.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				label.setText("= " + String.valueOf(sierowna()));
+				liczby[0] = -1;
+				liczby[1] = -1;
 			}
 		});
 		
@@ -139,6 +163,30 @@ public class GUI {
 		frame.setVisible(true);
 	}
 	
+	private void liczby(int liczba)
+	{
+		if(liczby[0] == -1)
+			liczby[0] = liczba;
+		else
+			liczby[1] = liczba;
+	}
+	
+	private void znaki(char c)
+	{
+		znak = c;
+	}
+	private int sierowna()
+	{
+		if(znak == '+')
+		{
+			return liczby[0] + liczby[1];
+		}
+		else 
+		{
+			return liczby[0] - liczby[1];
+		}
+		
+	}
 	
 	public static void main(String[] args) {
 		
