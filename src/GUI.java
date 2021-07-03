@@ -1,237 +1,251 @@
 import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class GUI {
 	
 	private JFrame frame;
-	private JPanel panel;
-	private JLabel label;
+	private JTextArea txtScrn;
 	private int[] liczby = {-1,-1};
 	private char znak;
 	
+	//przyciski numerow
+	private JButton button0 = new JButton("0");
+	private JButton button1 = new JButton("1");
+	private JButton button2 = new JButton("2");
+	private JButton button3 = new JButton("3");
+	private JButton button4 = new JButton("4");
+	private JButton button5 = new JButton("5");
+	private JButton button6 = new JButton("6");
+	private JButton button7 = new JButton("7");
+	private JButton button8 = new JButton("8");
+	private JButton button9 = new JButton("9");	
+	
+	//przyciski funkcyjne
+	private JButton buttonPLUS = new JButton("+");
+	private JButton buttonMINUS = new JButton("-");
+	private JButton buttonDEV= new JButton("/");
+	private JButton buttonMULT= new JButton("*");
+	private JButton buttonEQUALS = new JButton("=");
+	
 	public GUI()
 	{
+		//frame
 		frame = new JFrame();
-		panel = new JPanel();
-		GridBagConstraints c = new GridBagConstraints();
-		
-		
-		label = new JLabel("0");
-		//label.setHorizontalAlignment(60);
-		
-		panel.setBorder(BorderFactory.createEmptyBorder(120,120,120,120));
-		panel.setLayout(new GridBagLayout());
-		
-		
-		JButton button0 = new JButton("0");
-		JButton button1 = new JButton("1");
-		JButton button2 = new JButton("2");
-		JButton button3 = new JButton("3");
-		JButton button4 = new JButton("4");
-		JButton button5 = new JButton("5");
-		JButton button6 = new JButton("6");
-		JButton button7 = new JButton("7");
-		JButton button8 = new JButton("8");
-		JButton button9 = new JButton("9");	
-		JButton buttonPLUS = new JButton("+");
-		JButton buttonMINUS = new JButton("-");
-		JButton buttonEQUALS = new JButton("=");
-		
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipady = 40;      //make this component tall
-		c.weightx = 1;
-		c.gridwidth = 5;
-		c.gridx = 0;
-		c.gridy = 0;
-		c.insets = new Insets(2,2,2,2);
-		panel.add(button0,c);
-		
-		c.gridx = 10;
-		c.gridy = 0;
-		panel.add(button1,c);
-		
-		c.gridx = 15;
-		c.gridy = 0;
-		panel.add(button2,c);
-		
-		c.gridx = 0;
-		c.gridy = 40;
-		panel.add(button3,c);
-		
-		c.gridx = 10;
-		c.gridy = 40;
-		panel.add(button4,c);
-		
-		c.gridx = 15;
-		c.gridy = 40;
-		panel.add(button5,c);
-		
-		c.gridx = 0;
-		c.gridy = 80;
-		panel.add(button6,c);
-		
-		c.gridx = 10;
-		c.gridy = 80;
-		panel.add(button7,c);
-		
-		c.gridx = 15;
-		c.gridy = 80;
-		panel.add(button8,c);
-		
-		c.gridx = 0;
-		c.gridy = 120;
-		panel.add(button9,c);
-		
-		c.gridwidth = 10;
-		c.gridx = 20;
-		c.gridy = 0;
-		panel.add(buttonPLUS,c);
-		
-		c.gridx = 20;
-		c.gridy = 40;
-		panel.add(buttonMINUS,c);
-		
-		c.gridx = 20;
-		c.gridy = 80;
-		panel.add(buttonEQUALS,c);
-		
-		frame.add(label, BorderLayout.PAGE_START);
-		
-		frame.add(panel, BorderLayout.CENTER);
+		frame.setSize(550,400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Calculator");
-		frame.pack();
 		frame.setVisible(true);
+		frame.setResizable(false);
 		
+		//textArea
+		txtScrn = new JTextArea();
+		txtScrn.setSize(550,100);
+		txtScrn.setLocation(0,5);
+		txtScrn.setEditable(false);
 		
-		button0.addActionListener(new ActionListener(){
-			@Override
+		//obiekty na kalkulatorze	
+				frame.add(txtScrn);
+				frame.add(button0);
+				frame.add(button1);
+				frame.add(button2);
+				frame.add(button3);
+				frame.add(button4);
+				frame.add(button5);
+				frame.add(button6);
+				frame.add(button7);
+				frame.add(button8);
+				frame.add(button9);
+				frame.add(buttonPLUS);
+				frame.add(buttonMINUS);
+				frame.add(buttonDEV);
+				frame.add(buttonMULT);
+				frame.add(buttonEQUALS);
+				
+				
+		
+		button0.setSize(50,50);
+		button0.setLocation(183,300);
+		button0.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
-				label.setText("0");
-				liczby(0);
+				txtScrn.append("0");
+				
 			}
+			
 		});
 		
-		button1.addActionListener(new ActionListener(){
-			@Override
+		button1.setSize(50,50);
+		button1.setLocation(130,135);
+		button1.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
-				label.setText("1");
-				liczby(1);
+				txtScrn.append("1");
+				
 			}
+			
 		});
-		button2.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				label.setText("2");
-				liczby(2);
-			}
-		});
-		button3.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				label.setText("3");
-				liczby(3);
-			}
-		});
-		button4.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				label.setText("4");
-				liczby(4);
-			}
-		});
-		button5.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				label.setText("5");
-				liczby(5);
-			}
-		});
-		button6.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				label.setText("6");
-				liczby(6);
-			}
-		});
-		button7.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				label.setText("7");
-				liczby(7);
-			}
-		});
-		button8.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				label.setText("8");
-				liczby(8);
-			}
-		});
-		button9.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				label.setText("9");
-				liczby(9);
-			}
-		});
-		buttonPLUS.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				label.setText("+");
-				znaki('+');
-			}
-		});
-		buttonMINUS.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				label.setText("-");
-				znaki('-');
-			}
-		});
-		buttonEQUALS.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				label.setText("= " + String.valueOf(sierowna()));
-				liczby[0] = -1;
-				liczby[1] = -1;
-			}
-		});
-	}
-	
-	private void liczby(int liczba)
-	{
-		if(liczby[0] == -1)
-			liczby[0] = liczba;
-		else
-			liczby[1] = liczba;
-	}
-	
-	private void znaki(char c)
-	{
-		znak = c;
-	}
-	private int sierowna()
-	{
-		if(znak == '+')
-		{
-			return liczby[0] + liczby[1];
-		}
-		else 
-		{
-			return liczby[0] - liczby[1];
-		}
 		
+		button2.setSize(50,50);
+		button2.setLocation(183,135);
+		button2.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("2");
+				
+			}
+			
+		});
+
+		button3.setSize(50,50);
+		button3.setLocation(235,135);
+		button3.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("3");
+				
+			}
+			
+		});
+
+		button4.setSize(50,50);
+		button4.setLocation(130,190);
+		button4.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("4");
+				
+			}
+			
+		});
+
+		button5.setSize(50,50);
+		button5.setLocation(183,190);
+		button5.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("5");
+				
+			}
+			
+		});
+
+		button6.setSize(50,50);
+		button6.setLocation(235,190);
+		button6.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("6");
+				
+			}
+			
+		});
+
+		button7.setSize(50,50);
+		button7.setLocation(130,245);
+		button7.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("7");
+				
+			}
+			
+		});
+
+		button8.setSize(50,50);
+		button8.setLocation(183,245);
+		button8.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("8");
+				
+			}
+			
+		});
+
+		button9.setSize(50,50);
+		button9.setLocation(235,245);
+		button9.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("9");
+				
+			}
+			
+		});
+		
+		buttonDEV.setSize(100,50);
+		buttonDEV.setLocation(290,135);
+		buttonDEV.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("/");
+				
+			}
+			
+		});
+
+		buttonMULT.setSize(100,50);
+		buttonMULT.setLocation(290,190);
+		buttonMULT.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("*");
+				
+			}
+			
+		});
+
+		buttonMULT.setSize(100,50);
+		buttonMULT.setLocation(290,190);
+		buttonMULT.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("*");
+				
+			}
+			
+		});
+		
+		buttonMINUS.setSize(100,50);
+		buttonMINUS.setLocation(290,245);
+		buttonMINUS.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("-");
+				
+			}
+			
+		});
+		
+
+		buttonPLUS.setSize(100,50);
+		buttonPLUS.setLocation(290,300);
+		buttonPLUS.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("+");
+				
+			}
+			
+		});
+		
+		buttonEQUALS.setSize(100,215);
+		buttonEQUALS.setLocation(395,135);
+		buttonEQUALS.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("=");
+				
+			}
+			
+		});
 	}
 	
 	public static void main(String[] args) {
