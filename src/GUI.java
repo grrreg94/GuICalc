@@ -41,6 +41,7 @@ public class GUI {
 	{
 		//frame
 		frame = new JFrame();
+		frame.setLayout(null);
 		frame.setSize(550,400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Calculator");
@@ -283,6 +284,58 @@ public class GUI {
 					txtScrn.setText(strTotal);
 					
 				}
+				else if(txtScrn.getText().contains("-"))
+				{
+					statement = txtScrn.getText().split("\\-");
+					
+					strNum1 = statement[0];
+					strNum2 = statement[1];
+					
+					num1 = Integer.parseInt(strNum1);
+					num2 = Integer.parseInt(strNum2);
+					
+					total = num1 - num2;
+					
+					strTotal = Integer.toString(total);
+					
+					txtScrn.setText(strTotal);
+					
+				}
+				else if(txtScrn.getText().contains("/"))
+				{
+					statement = txtScrn.getText().split("\\/");
+					
+					strNum1 = statement[0];
+					strNum2 = statement[1];
+					
+					num1 = Integer.parseInt(strNum1);
+					num2 = Integer.parseInt(strNum2);
+					
+					total = num1 / num2;
+					
+					strTotal = Integer.toString(total);
+					
+					txtScrn.setText(strTotal);
+					
+				}
+				else if(txtScrn.getText().contains("*"))
+				{
+					statement = txtScrn.getText().split("\\*");
+					
+					strNum1 = statement[0];
+					strNum2 = statement[1];
+					
+					num1 = Integer.parseInt(strNum1);
+					num2 = Integer.parseInt(strNum2);
+					
+					total = num1 * num2;
+					
+					strTotal = Integer.toString(total);
+					
+					txtScrn.setText(strTotal);
+					
+				}
+				
 				
 			}
 			
