@@ -1,19 +1,22 @@
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class GUI {
 	
 	private JFrame frame;
 	private JTextArea txtScrn;
-	private int[] liczby = {-1,-1};
-	private char znak;
+	
+	String strNum1 = "";
+	String strNum2 = "";
+	String[] statement;
+	int num1 = 0;
+	int num2 = 0;
+	int total = 0;
+	String strTotal = "";
+	
 	
 	//przyciski numerow
 	private JButton button0 = new JButton("0");
@@ -69,7 +72,10 @@ public class GUI {
 				frame.add(buttonEQUALS);
 				
 				
-		
+		//numerki		
+				
+				
+		//bt1
 		button0.setSize(50,50);
 		button0.setLocation(183,300);
 		button0.addActionListener(new ActionListener() {
@@ -81,6 +87,8 @@ public class GUI {
 			
 		});
 		
+		
+		//bt2
 		button1.setSize(50,50);
 		button1.setLocation(130,135);
 		button1.addActionListener(new ActionListener() {
@@ -92,6 +100,8 @@ public class GUI {
 			
 		});
 		
+		
+		//bt3
 		button2.setSize(50,50);
 		button2.setLocation(183,135);
 		button2.addActionListener(new ActionListener() {
@@ -114,6 +124,8 @@ public class GUI {
 			
 		});
 
+		
+		//bt4
 		button4.setSize(50,50);
 		button4.setLocation(130,190);
 		button4.addActionListener(new ActionListener() {
@@ -125,6 +137,8 @@ public class GUI {
 			
 		});
 
+		
+		//bt5
 		button5.setSize(50,50);
 		button5.setLocation(183,190);
 		button5.addActionListener(new ActionListener() {
@@ -136,6 +150,8 @@ public class GUI {
 			
 		});
 
+		
+		//bt6
 		button6.setSize(50,50);
 		button6.setLocation(235,190);
 		button6.addActionListener(new ActionListener() {
@@ -147,6 +163,8 @@ public class GUI {
 			
 		});
 
+		
+		//bt7
 		button7.setSize(50,50);
 		button7.setLocation(130,245);
 		button7.addActionListener(new ActionListener() {
@@ -158,6 +176,8 @@ public class GUI {
 			
 		});
 
+		
+		//bt8
 		button8.setSize(50,50);
 		button8.setLocation(183,245);
 		button8.addActionListener(new ActionListener() {
@@ -168,7 +188,9 @@ public class GUI {
 			}
 			
 		});
-
+		
+		
+		//bt39
 		button9.setSize(50,50);
 		button9.setLocation(235,245);
 		button9.addActionListener(new ActionListener() {
@@ -180,6 +202,13 @@ public class GUI {
 			
 		});
 		
+		
+		
+		
+		//funckje
+		
+		
+		//dev
 		buttonDEV.setSize(100,50);
 		buttonDEV.setLocation(290,135);
 		buttonDEV.addActionListener(new ActionListener() {
@@ -191,28 +220,21 @@ public class GUI {
 			
 		});
 
-		buttonMULT.setSize(100,50);
-		buttonMULT.setLocation(290,190);
-		buttonMULT.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				txtScrn.append("*");
-				
-			}
-			
-		});
-
-		buttonMULT.setSize(100,50);
-		buttonMULT.setLocation(290,190);
-		buttonMULT.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				txtScrn.append("*");
-				
-			}
-			
-		});
 		
+		//mult
+		buttonMULT.setSize(100,50);
+		buttonMULT.setLocation(290,190);
+		buttonMULT.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				txtScrn.append("*");
+				
+			}
+			
+		});
+
+		
+		//minus
 		buttonMINUS.setSize(100,50);
 		buttonMINUS.setLocation(290,245);
 		buttonMINUS.addActionListener(new ActionListener() {
@@ -225,6 +247,7 @@ public class GUI {
 		});
 		
 
+		//plus
 		buttonPLUS.setSize(100,50);
 		buttonPLUS.setLocation(290,300);
 		buttonPLUS.addActionListener(new ActionListener() {
@@ -235,13 +258,31 @@ public class GUI {
 			}
 			
 		});
+
 		
+		//equals
 		buttonEQUALS.setSize(100,215);
 		buttonEQUALS.setLocation(395,135);
 		buttonEQUALS.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				txtScrn.append("=");
+				if(txtScrn.getText().contains("+"))
+				{
+					statement = txtScrn.getText().split("\\+");
+					
+					strNum1 = statement[0];
+					strNum2 = statement[1];
+					
+					num1 = Integer.parseInt(strNum1);
+					num2 = Integer.parseInt(strNum2);
+					
+					total = num1 + num2;
+					
+					strTotal = Integer.toString(total);
+					
+					txtScrn.setText(strTotal);
+					
+				}
 				
 			}
 			
